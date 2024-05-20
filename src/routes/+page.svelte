@@ -13,6 +13,9 @@
     let products = data.products.products;
     $: products = data.products.products;
 
+    let categories = data.categories;
+    $: categories = data.categories;
+
     let limit = data.limit
     $: limit = data.limit
 
@@ -26,7 +29,7 @@
 </script>
 <Card>
 
-    <Table prodcuts="{products}"}></Table>
+    <Table prodcuts="{products}" categories="{categories}"></Table>
     <Paginator rootPath="/" {skip} {limit} {total}></Paginator>
 
 </Card>
