@@ -4,8 +4,8 @@
     import Table from "$lib/table/Table.svelte";
     import Paginator from "$lib/table/Paginator.svelte";
     import Card from "$lib/Card.svelte";
-    import {filterStore} from "$lib/stores/FilterStore"
     import SearchBar from "$lib/table/SearchBar.svelte";
+
 
     export let data;
 
@@ -19,11 +19,6 @@
     let limit = data.limit;
     $: limit = data.limit
 
-    let skip = data.skip;
-    $: skip = data.skip
-    let total = data.total;
-    $: total = data.total
-
 
     let priceVon = data.priceVon;
     $: priceVon = data.priceVon
@@ -35,13 +30,13 @@
     $: searchParam = data.search
 
 
-
-
 </script>
 <Card>
-    <SearchBar categories="{categories}" {priceVon} {priceBis} {selectedCategory} {limit} {skip}
+    <SearchBar categories="{categories}" {priceVon} {priceBis} {selectedCategory}
                {searchParam}></SearchBar>
-    <Table prodcuts="{products}"></Table>
-    <Paginator rootPath="/" {skip} {limit} {total}></Paginator>
+    <Table prodcuts="{products.dto}"></Table>
+
+    <Paginator rootPath="/" pageNo="{products.pageNo}" limit="{limit}"
+               maxNumberOfPages="{products.maxNumberOfPages}"></Paginator>
 
 </Card>

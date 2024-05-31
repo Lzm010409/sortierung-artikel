@@ -26,9 +26,6 @@
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
             <th scope="col" class="px-6 py-3">
-                Bild
-            </th>
-            <th scope="col" class="px-6 py-3">
                 Titel
             </th>
             <th scope="col" class="px-6 py-3">
@@ -42,9 +39,6 @@
         <tbody>
         {#each prodcuts as item}
             <tr class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    <img class="rounded-full w-12 h-12" src="{item.images[0]}" alt="image description">
-                </th>
                 <td class="px-6 py-4">
                     {item.title}
                 </td>

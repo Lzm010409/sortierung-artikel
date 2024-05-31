@@ -10,9 +10,11 @@ export const load: PageServerLoad = async ({url, params}) => {
     let priceVon = url.searchParams.get("pricevon");
     let priceBis = url.searchParams.get("pricebis");
 
-    let searchUrl = `https://api.escuelajs.co/api/v1/products`
+    let searchUrl = `https://product-api-9566dd903a0b.herokuapp.com/api/v1/product`
+
+
     let productFilter = []
-    productFilter.push("title=" + search, "category=" + category, "price_min=" + priceVon, "price_max=" + priceBis, "limit=" + limit, "offset=" + skip);
+    productFilter.push("title=" + search, "category=" + category, "pricefrom=" + priceVon, "priceto=" + priceBis, "pageSize=" + limit, "pageNo=" + skip);
 
     let effectiveFilter = productFilter.filter((filtervalues) => !filtervalues.includes("null"))
     searchUrl = searchUrl + "?" + effectiveFilter.join("&")
@@ -23,20 +25,18 @@ export const load: PageServerLoad = async ({url, params}) => {
 
     }
     const fetchCategories = async () => {
-        return await fetch('https://api.escuelajs.co/api/v1/categories')
+        return await fetch('https://product-api-9566dd903a0b.herokuapp.com/api/v1/category')
             .then(res => res.json());
 
     }
 
     const products = await fetchData();
     const categories = await fetchCategories();
-    console.log(categories)
+    console.log(products)
     return {
-        products: products,
-        categories: categories,
+        products: products.data,
+        categories: categories.data,
         limit: limit,
-        skip: skip,
-        total: 50,
         search: search,
         priceVon: priceVon,
         priceBis: priceBis,

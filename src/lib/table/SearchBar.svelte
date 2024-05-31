@@ -81,47 +81,48 @@
                     <option value="alle">Alle</option>
                     {#if categories}
                         {#each categories as category}
-                            <option value="{category.id}">{category.name}</option>
+                            <option value="{category.name}">{category.name}</option>
                         {/each}
                     {/if}
                 </select>
             </div>
             <div class="basis-5/6">
-                <div class="flex flex-row">
-                    <div class="relative mb-6 basis-3/4">
-                        <label for="pricevon" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Preis
-                            von:</label>
-                        <input id="pricevon" type="range" bind:value="{priceVon}" min="0" max="{priceBis}"
-                               class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
-                        <span class="text-sm text-gray-500 dark:text-gray-400 absolute start-0 -bottom-6">Min ($0)</span>
-                        <span class="text-sm text-gray-500 dark:text-gray-400 absolute start-1/3 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6">{Number(priceBis) / 4}
-                            $</span>
-                        <span class="text-sm text-gray-500 dark:text-gray-400 absolute start-2/3 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6">{(Number(priceBis) / 4) * 2}
-                            $</span>
-                        <span class="text-sm text-gray-500 dark:text-gray-400 absolute end-0 -bottom-6">{priceBis}
-                            $</span>
+                <div class="flex flex-row gap-2">
+                    <div class="relative mb-6 basis-1/2">
+                        <label for="preisVon"
+                               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Preis von:</label>
+                        <div class="relative w-full">
+                            <div class="absolute inset-y-0 start-0 top-0 flex items-center ps-3.5 pointer-events-none">
+                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                          stroke-width="2"
+                                          d="M5 2a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1M2 5h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm8 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z"/>
+                                </svg>
+                            </div>
+                            <input type="number" bind:value="{priceVon}" id="preisVon"
+                                   class="block p-2.5 w-full z-20 ps-10 text-sm text-gray-900 bg-gray-50 rounded-s-lg border-e-gray-50 border-e-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-e-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
+                                   placeholder="Von..."/>
+                        </div>
                     </div>
-                    <div class="basis-1/4 flex justify-center items-center"><p
-                            class=" text-2xl mb-3 text-gray-500 dark:text-gray-400">{priceVon}$</p></div>
-                </div>
-                <div class="flex flex-row">
-                    <div class="relative mb-6 basis-3/4">
-                        <label for="pricebis" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Preis
-                            bis:</label>
-                        <input id="pricebis" type="range" bind:value="{priceBis}" min="{priceVon}" max="1500"
-                               class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
-                        <span class="text-sm text-gray-500 dark:text-gray-400 absolute start-0 -bottom-6">Min {priceVon}
-                            $</span>
-                        <span class="text-sm text-gray-500 dark:text-gray-400 absolute start-1/3 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6">{((1500 - Number(priceVon)) / 3) + Number(priceVon)}
-                            $</span>
-                        <span class="text-sm text-gray-500 dark:text-gray-400 absolute start-2/3 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6">{((1500 - Number(priceVon)) / 3) * 2 + Number(priceVon)}
-                            $</span>
-                        <span class="text-sm text-gray-500 dark:text-gray-400 absolute end-0 -bottom-6">Max ($1500)</span>
+                    <div class="relative mb-6 basis-1/2">
+                        <label for="preisBis"
+                               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Preis bis:</label>
+                        <div class="relative w-full">
+                            <div class="absolute inset-y-0 start-0 top-0 flex items-center ps-3.5 pointer-events-none">
+                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                          stroke-width="2"
+                                          d="M5 2a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1M2 5h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm8 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z"/>
+                                </svg>
+                            </div>
+                            <input type="number" bind:value="{priceBis}" id="preisVon"
+                                   class="block p-2.5 w-full z-20 ps-10 text-sm text-gray-900 bg-gray-50 rounded-s-lg border-e-gray-50 border-e-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-e-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
+                                   placeholder="Bis..."/>
+                        </div>
                     </div>
-                    <div class="basis-1/4 flex justify-center items-center"><p
-                            class=" text-2xl mb-3 text-gray-500 dark:text-gray-400">{priceBis}$</p></div>
                 </div>
-
             </div>
 
 
